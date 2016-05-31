@@ -3,6 +3,7 @@ from ckan.lib.base import request, BaseController, abort, json, c
 
 import pylons.config as config
 
+import os
 import subprocess
 import shlex
 
@@ -210,12 +211,23 @@ class Resource_api_basic_functionsController(BaseController):
 
 			command = request.body
 		        init_path = request.params.get('init_path', '')
+			env_path = request.params.get('env_path', '')
 
 			log.info('API basic function execute_command - Validations ok, execute command')
 
-			if not init_path:
-				result = subprocess.check_output(shlex.split(command))
-				print result
-			else:
-				result = subprocess.check_output(shlex.split(command),cwd=init_path)
-				print result
+			if not init_path and not env_path:
+				result = subprocess.check_output(shlex.split(command),preexec_fn=os.setsid)
+                		print result
+            		elif not init_path:
+				newEnv = os.environ.copy()
+				newEnv['PATH'] = env_path
+                		result = subprocess.check_output(shlex.split(command),env=newEnv,preexec_fn=os.setsid)
+                		print result
+            		elif not env_path:
+                		result = subprocess.check_output(shlex.split(command),cwd=init_path,preexec_fn=os.setsid)
+                		print result
+            		else:
+				newEnv = os.environ.copy()
+				newEnv['PATH'] = env_path
+                		result = subprocess.check_output(shlex.split(command),cwd=init_path,env=newEnv,preexec_fn=os.setsid)
+                	print result
