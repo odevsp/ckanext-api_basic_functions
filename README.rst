@@ -45,10 +45,11 @@ Config Settings
 ---------------
 
 Specify the needed config settings, for example:
-    ckan.api_harvest.config_file = /etc/ckan/default/production.ini
+    ckan.api_basic.config_file = /etc/ckan/default/production.ini
 
-    ckan.api_harvest.virtual_evnvironment_route = /etc/ckan/default
+    ckan.api_basic.virtual_evnvironment_route = /etc/ckan/default
 
+    ckan.api_basic.iso = ISO-8859-1
 
 ------------------------
 Development Installation

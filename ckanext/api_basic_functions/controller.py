@@ -25,13 +25,13 @@ class Resource_api_basic_functionsController(BaseController):
 				log.info('API basic function - error detected, need API-Key')
 				abort(403, 'Forbidden, need API-Key')
 
-			config_file = config.get('ckan.api_harvest.config_file', '')
+			config_file = config.get('ckan.api_basic.config_file', '')
 
 			if config_file == '':
 				log.info('API basic function - error detected, config_file parameter not defined in configuration file')
 				abort(403, 'Forbidden, config_file parameter not defined in configuration file')
 
-			ve_route = config.get('ckan.api_harvest.virtual_evnvironment_route')
+			ve_route = config.get('ckan.api_basic.virtual_evnvironment_route')
 
 			if ve_route == '':
 				log.info('API basic function - error detected, ve_route parameter not defined in configuration file')
@@ -76,11 +76,11 @@ class Resource_api_basic_functionsController(BaseController):
 				log.info('API basic function - error detected, sqlalchemy.url parameter not defined in configuration file')
 				abort(403, 'Forbidden, sqlalchemy.url parameter not defined in configuration file')
 
-			iso = config.get('ckan.api_harvest.iso', '')
+			iso = config.get('ckan.api_basic.iso', '')
 
 			if iso == '':
-				log.info('API basic function - error detected, ckan.api_harvest. parameter not defined in configuration file')
-				abort(403, 'Forbidden, ckan.api_harvest. parameter not defined in configuration file')
+				log.info('API basic function - error detected, ckan.api_basic. parameter not defined in configuration file')
+				abort(403, 'Forbidden, ckan.api_basic. parameter not defined in configuration file')
 
 			postgre_str = 'postgresql://'
 
@@ -150,11 +150,11 @@ class Resource_api_basic_functionsController(BaseController):
 				log.info('API basic function - error detected, sqlalchemy.url parameter not defined in configuration file')
 				abort(403, 'Forbidden, sqlalchemy.url parameter not defined in configuration file')
 
-			iso = config.get('ckan.api_harvest.iso', '')
+			iso = config.get('ckan.api_basic.iso', '')
 
 			if iso == '':
-				log.info('API basic function - error detected, ckan.api_harvest. parameter not defined in configuration file')
-				abort(403, 'Forbidden, ckan.api_harvest. parameter not defined in configuration file')
+				log.info('API basic function - error detected, ckan.api_basic. parameter not defined in configuration file')
+				abort(403, 'Forbidden, ckan.api_basic. parameter not defined in configuration file')
 
 			postgre_str = 'postgresql://'
 
