@@ -17,6 +17,9 @@ class Api_Basic_FunctionsPlugin(plugins.SingletonPlugin):
         map.connect('/api_basic/reindex_solr',
                 controller='ckanext.api_basic_functions.controller:Resource_api_basic_functionsController',
                 action='reindex_solr')
+        map.connect('/api_basic/clear_index_solr',
+                controller='ckanext.api_basic_functions.controller:Resource_api_basic_functionsController',
+                action='clear_index_solr')
         map.connect('/api_basic/execute_query',
                 controller='ckanext.api_basic_functions.controller:Resource_api_basic_functionsController',
                 action='execute_query')
@@ -24,6 +27,9 @@ class Api_Basic_FunctionsPlugin(plugins.SingletonPlugin):
                 controller='ckanext.api_basic_functions.controller:Resource_api_basic_functionsController',
                 action='execute_script_sql')
         map.connect('/api_basic/execute_command',
-                    controller='ckanext.api_basic_functions.controller:Resource_api_basic_functionsController',
-                    action='execute_command')
+                controller='ckanext.api_basic_functions.controller:Resource_api_basic_functionsController',
+                action='execute_command')
+        map.connect('/api_basic/add_file',
+                controller='ckanext.api_basic_functions.controller:Resource_api_basic_functionsController',
+                action='add_file')
         return map
