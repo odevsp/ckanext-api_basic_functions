@@ -97,13 +97,15 @@ class Resource_api_basic_functionsController(BaseController):
 
 			try:
 				result = subprocess.check_output(
-					'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=\'' + iso + '\'; psql -h \'' + host + '\' -U \'' + user + '\' -d \'' + schema + '\' -c \"' + query + '\"',
+					#'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=\'' + iso + '\'; psql -h \'' + host + '\' -U \'' + user + '\' -d \'' + schema + '\' -c \"' + query + '\"',
+					'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=\'' + iso + '\'; psql \"' + con_string + '\" -c \"' + query + '\"',
 					stderr=subprocess.STDOUT,shell=True)
 				print result
 			except:
 				try:
 					result = subprocess.check_output(
-	      					'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=; psql -h \'' + host + '\' -U \'' + user + '\' -d \'' + schema + '\' -c \"' + query + '\"',
+	      					#'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=; psql -h \'' + host + '\' -U \'' + user + '\' -d \'' + schema + '\' -c \"' + query + '\"',
+                        	                'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=; psql \"' + con_string + '\" -c \"' + query + '\"',
                         	                stderr=subprocess.STDOUT,shell=True)
 					print result
 				except subprocess.CalledProcessError as e:
@@ -170,13 +172,15 @@ class Resource_api_basic_functionsController(BaseController):
       
 			try:
             			result = subprocess.check_output(
-					'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=\'' + iso + '\'; psql -h \'' + host + '\' -U \'' + user + '\' -d \'' + schema + '\' -a -f ' + path,
+					#'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=\'' + iso + '\'; psql -h \'' + host + '\' -U \'' + user + '\' -d \'' + schema + '\' -a -f ' + path,
+					'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=\'' + iso + '\'; psql \"' + con_string + '\" -a -f ' + path,
 					stderr=subprocess.STDOUT, shell=True)
             			print result
       			except:
             			try:
                 			result = subprocess.check_output(
-			          		'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=; psql -h \'' + host + '\' -U \'' + user + '\' -d \'' + schema + '\' -a -f ' + path,
+			          		#'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=; psql -h \'' + host + '\' -U \'' + user + '\' -d \'' + schema + '\' -a -f ' + path,
+						'export PGPASSWORD=\'' + password + '\'; export PGCLIENTENCODING=; psql \"' + con_string + '\" -a -f ' + path,
                     				stderr=subprocess.STDOUT, shell=True)
                 			print result
             			except subprocess.CalledProcessError as e:
