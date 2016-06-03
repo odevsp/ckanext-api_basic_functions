@@ -45,11 +45,10 @@ Config Settings
 ---------------
 
 Specify the needed config settings, for example:
-    ckan.api_basic.config_file = /etc/ckan/default/production.ini
+    ckan.api_harvest.config_file = /etc/ckan/default/production.ini
 
-    ckan.api_basic.virtual_evnvironment_route = /etc/ckan/default
+    ckan.api_harvest.virtual_evnvironment_route = /etc/ckan/default
 
-    ckan.api_basic.iso = ISO-8859-1
 
 ------------------------
 Development Installation
@@ -69,18 +68,19 @@ Available methods
 
 The methods defined are available using GET and POST calls, and required request parameter or body, examples:
 
--Reindex solr
-http://ckan_url/api_basic/reindex_solr
-Method GET
+-Reindex solr http://ckan_url/api_basic/reindex_solr Method GET
 
--Execute query in CKAN database
-http://ckan_url/api_basic/execute_query
-Method POST
-Body must be content the query
+-Clear index solr http://ckan_url/api_basic/clear_index_solr Method GET
 
--Execute script SQL in CKAN database:
-http://ckan_url/api_basic/execute_script_sql
-Method POST
-Param path must be content the absolute path to script
+-Execute query in CKAN database http://ckan_url/api_basic/execute_query Method POST Body must be content the query
+
+-Execute script SQL in CKAN database: http://ckan_url/api_basic/execute_script_sql Method POST Param path must be
+content the absolute path to script
+
+-Execute command in CKAN server: http://ckan_url/api_basic/execute_command Method POST Param init_path must be content
+the absolute path to execute Param env_path must be content oft the PATH variable Body must be content the command to execute
+
+-Add file to CKAN server: http://ckan_url/api_basic/add_file Method POST Param file_path must be content the absolute
+path and name of the file Body must be content to the file
 
 Only admin user using API key can call this methods.
