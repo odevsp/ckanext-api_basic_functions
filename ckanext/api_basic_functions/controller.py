@@ -235,7 +235,7 @@ class Resource_api_basic_functionsController(BaseController):
 
             host_sch = con_string[con_string.find('@') + 1:]
             host = host_sch[:host_sch.find('/')]
-            schema = host_sch[host_sch.find('/') + 1:]''
+            schema = host_sch[host_sch.find('/') + 1:]
 
             if schema.find('?') <> -1:
                 schema = schema[:schema.find('?')]
