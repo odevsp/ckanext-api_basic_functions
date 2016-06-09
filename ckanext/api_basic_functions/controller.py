@@ -334,6 +334,10 @@ class Resource_api_basic_functionsController(BaseController):
 
             content = request.body
             file_path = request.params.get('file_path', '')
+            
+            if not file_path:
+                log.info('API basic function - error detected, no param file_path received')
+                abort(400, 'No param file_path received')
 
             log.info('API basic function execute_command - Validations ok, execute command')
 
